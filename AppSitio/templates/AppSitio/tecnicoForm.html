@@ -1,0 +1,27 @@
+{% extends "AppSitio/home.html" %}
+
+
+{% block principal %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">Técnicos</h1>
+<p class="lead text-white-50 mb-4">Complete los campos para agregar un técnico nuevo</p>
+<div class="d-grid gap-3 d-sm-flex justify-content-sm-center"></div>
+
+{% endblock principal %}
+
+
+
+
+{% block agregar %}
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <table class="text-white">
+        {{ form.as_table }}
+    </table>
+    <br>
+    <input type="submit" value="Confirmar">
+</form>
+
+{% endblock agregar %}
