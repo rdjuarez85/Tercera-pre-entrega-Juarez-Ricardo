@@ -8,9 +8,15 @@ from django.db.models import Q
 
 # Create your views here.
 
-# ---------------------------------- Home ----------------------------------
+
 def home(request):
     return render(request, "AppSitio/home.html")
+
+def nosotros(request):
+    return render(request, "AppSitio/nosotros.html")
+
+def contacto(request):
+    return render(request, "AppSitio/contacto.html")
 
 
 # ---------------------------------- Clientes ----------------------------------
@@ -40,7 +46,7 @@ def buscarClientes(request):
         clientes = Cliente.objects.filter(Q(nombre__icontains=patron) | Q(apellido__icontains=patron))
         contexto = {"clientes": clientes}
         return render(request, "AppSitio/clientes.html", contexto)
-    return HttpResponse("No se ingresaron patrones de busqueda")
+
 
 # ---------------------------------- Técnicos ----------------------------------
 def tecnicos(request):
@@ -69,7 +75,6 @@ def buscarTecnicos(request):
         tecnicos = Tecnico.objects.filter(Q(nombre__icontains=patron) | Q(apellido__icontains=patron))
         contexto = {"tecnicos": tecnicos}
         return render(request, "AppSitio/tecnicos.html", contexto)
-    return HttpResponse("No se ingresaron patrones de busqueda")
 
 
 # ---------------------------------- Trabajos ----------------------------------
@@ -100,4 +105,3 @@ def buscarTrabajos(request):
         trabajos = Trabajo.objects.filter(Q(dispositivo__icontains=patron) | Q(falla__icontains=patron) | Q(estado__icontains=patron))
         contexto = {"trabajos": trabajos}
         return render(request, "AppSitio/trabajos.html", contexto)
-    return HttpResponse("No se ingresaron patrones de busqueda")

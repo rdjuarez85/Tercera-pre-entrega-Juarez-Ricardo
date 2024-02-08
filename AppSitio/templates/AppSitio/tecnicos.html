@@ -4,7 +4,7 @@
 {% block principal %}
 
 <h1 class="display-5 fw-bolder text-white mb-2">Técnicos</h1>
-<p class="lead text-white-50 mb-4">Alguna frase copada....</p>
+<p class="lead text-white-50 mb-4">Listado de técnicos</p>
 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center"></div>
 
 {% endblock principal %}
@@ -15,7 +15,7 @@
 {% block agregar %}
 
 <div style="display: flex; justify-content: space-between;">
-    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'trabajoForm' %}">Tecnico nuevo</a>
+    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'tecnicoForm' %}">Tecnico nuevo</a>
     
     <form action="{% url 'buscarTecnicos' %}" method="get">
         {% csrf_token %}
