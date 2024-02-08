@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from .models import *
 from .forms import *
+from django.db.models import Q
 
 
 # Create your views here.
@@ -33,6 +34,13 @@ def clienteForm(request):
     contexto = {"form": miForm}
     return render(request, "AppSitio/clienteForm.html", contexto)
 
+def buscarClientes(request):
+    if request.GET["buscar"]:
+        patron = request.GET["buscar"]
+        clientes = Cliente.objects.filter(Q(nombre__icontains=patron) | Q(apellido__icontains=patron))
+        contexto = {"clientes": clientes}
+        return render(request, "AppSitio/clientes.html", contexto)
+    return HttpResponse("No se ingresaron patrones de busqueda")
 
 # ---------------------------------- Técnicos ----------------------------------
 def tecnicos(request):
@@ -54,6 +62,14 @@ def tecnicoForm(request):
     
     contexto = {"form": miForm}
     return render(request, "AppSitio/tecnicoForm.html", contexto)
+
+def buscarTecnicos(request):
+    if request.GET["buscar"]:
+        patron = request.GET["buscar"]
+        tecnicos = Tecnico.objects.filter(Q(nombre__icontains=patron) | Q(apellido__icontains=patron))
+        contexto = {"tecnicos": tecnicos}
+        return render(request, "AppSitio/tecnicos.html", contexto)
+    return HttpResponse("No se ingresaron patrones de busqueda")
 
 
 # ---------------------------------- Trabajos ----------------------------------
@@ -77,3 +93,11 @@ def trabajoForm(request):
     
     contexto = {"form": miForm}
     return render(request, "AppSitio/trabajoForm.html", contexto)
+
+def buscarTrabajos(request):
+    if request.GET["buscar"]:
+        patron = request.GET["buscar"]
+        trabajos = Trabajo.objects.filter(Q(dispositivo__icontains=patron) | Q(falla__icontains=patron) | Q(estado__icontains=patron))
+        contexto = {"trabajos": trabajos}
+        return render(request, "AppSitio/trabajos.html", contexto)
+    return HttpResponse("No se ingresaron patrones de busqueda")

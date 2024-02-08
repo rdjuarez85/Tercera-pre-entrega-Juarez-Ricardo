@@ -14,9 +14,16 @@
 
 {% block agregar %}
 
-<a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'clienteForm' %}">Cliente nuevo</a>
-<br>
-<br>
+<div style="display: flex; justify-content: space-between;">
+    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'clienteForm' %}">Cliente nuevo</a>
+    
+    <form action="{% url 'buscarClientes' %}" method="get">
+        {% csrf_token %}
+        <input type="submit" value=" Buscar clientes ">
+        <input type="text" name="buscar" id="buscar" required> 
+    </form>
+</div>
+
 <br>
 <br>
 

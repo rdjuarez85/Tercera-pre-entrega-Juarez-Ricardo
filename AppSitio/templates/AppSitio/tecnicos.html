@@ -14,9 +14,16 @@
 
 {% block agregar %}
 
-<a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'tecnicoForm' %}">Técnico nuevo</a>
-<br>
-<br>
+<div style="display: flex; justify-content: space-between;">
+    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'trabajoForm' %}">Tecnico nuevo</a>
+    
+    <form action="{% url 'buscarTecnicos' %}" method="get">
+        {% csrf_token %}
+        <input type="submit" value=" Buscar técnico ">
+        <input type="text" name="buscar" id="buscar" required> 
+    </form>
+</div>
+
 <br>
 <br>
 
