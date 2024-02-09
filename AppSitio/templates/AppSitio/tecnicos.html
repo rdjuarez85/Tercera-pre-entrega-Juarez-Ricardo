@@ -15,7 +15,7 @@
 {% block agregar %}
 
 <div style="display: flex; justify-content: space-between;">
-    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'tecnicoForm' %}">Tecnico nuevo</a>
+    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'tecnicoForm' %}">Técnico nuevo</a>
     
     <form action="{% url 'buscarTecnicos' %}" method="get">
         {% csrf_token %}
